@@ -47,6 +47,15 @@
     }
 
     function pegarComentariosPorCodigo($codTarefa){
+        global $banco;
+        $busca = $banco->query("SELECT * FROM comentarios WHERE cod_tarefa = '$codTarefa' ORDER BY criado_em ASC");
+        $comentarios = [];
+
+        while ($row = $busca->fetch_assoc()) {
+            $comentarios[] = $row;
+        }
+
+        return $comentarios;
         // SELECT * FROM comentarios WHERE cod_tarefa = '$codTarefa' ORDER BY criado_em ASC
     }
 

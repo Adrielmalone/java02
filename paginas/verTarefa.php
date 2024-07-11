@@ -42,10 +42,22 @@
 
         <!-- bloco comentarios -->
         <h3>Comentários</h3>
-        <?php // $listaComentarios = pegarComentariosPorCodigo($codTarefa); ?>
-        <p> o comentario vai aqui - <em> [nome do usuario - 07/07/2023] </em> </p>
-        <p> o comentario vai aqui - <em> [nome do usuario - 07/07/2023] </em> </p>
-        <p> o comentario vai aqui - <em> [nome do usuario - 07/07/2023] </em> </p>
+        <?php 
+            $listaComentarios = pegarComentariosPorCodigo($codTarefa);
+            
+            for($i = 0 ; $i < count($listaComentarios); $i++) {
+                $comentario = $listaComentarios[$i];
+                $comentarioText = $comentario["texto"];
+                $comentarioUsuCod = $comentario["cod_usuario"];
+                $usuarioNovo = pegarUsuarioPorCodigo($comentarioUsuCod);
+                $comentarioUsuNome = $usuarioNovo["nome"];
+                $horario = $comentario['criado_em'];
+
+
+                echo '<p>' . $comentarioText . ' - <em> [' . $comentarioUsuNome . ' - ' . $horario . '] </em> </p>';
+            }
+         
+        ?>
         <!-- fim bloco comentarios -->
 
         

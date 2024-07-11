@@ -36,12 +36,11 @@
                         
                         
                         
-
                         if($status === "Feito") {
                             $feito[] = $t;
                         } else if ($status === "Fazer") {
                             $fazer[] = $t;
-                        } else {
+                        } else if ($status === "Fazendo") {
                             $fazendo[] = $t;
                         }
                         
@@ -57,7 +56,7 @@
                         }
 
                         echo '<div class="task">';
-                        echo '<a href="">' . $t['nome_tarefa'] . ' [' . $usuarioNome . '] </a>';
+                        echo '<a href="./verTarefa.php?cod='. $fazerTask['cod'] . '">' . $fazerTask['nome_tarefa'] . ' [' . $usuarioNome . '] </a>';
                         echo '</div>';
                     }
                   
@@ -74,8 +73,8 @@
 
                 <?php
                     for($i = 0 ; $i < count($fazendo); $i++) {
-                        $fazerTask = $fazer[$i];
-                        $usuario = pegarUsuarioPorCodigo($fazerTask['criado_por']);
+                        $fazendoTask = $fazendo[$i];
+                        $usuario = pegarUsuarioPorCodigo($fazendoTask['criado_por']);
 
                         $usuarioNome = "Usuario Desconhecido";
                         if(!empty($usuario)) {
@@ -83,7 +82,7 @@
                         }
 
                         echo '<div class="task">';
-                        echo '<a href="">' . $t['nome_tarefa'] . ' [' . $usuarioNome . '] </a>';
+                        echo '<a href="./verTarefa.php?cod='. $fazendoTask['cod'] . '">' . $fazendoTask['nome_tarefa'] . ' [' . $usuarioNome . '] </a>';
                         echo '</div>';
                     }
                 ?>
@@ -94,11 +93,21 @@
             <div class="column" id="feito">
                 <h3>Feito</h3>
                 
-                <!-- bloco de tarefa -->
-                <div class="task">
-                    <a href=""> Nome da tarefa [usuario] </a>
-                </div>
-                <!-- fim do bloco -->
+                <?php
+                    for($i = 0 ; $i < count($feito); $i++) {
+                        $feitoTask = $feito[$i];
+                        $usuario = pegarUsuarioPorCodigo($feitoTask['criado_por']);
+
+                        $usuarioNome = "Usuario Desconhecido";
+                        if(!empty($usuario)) {
+                            $usuarioNome = $usuario['nome'];
+                        }
+
+                        echo '<div class="task">';
+                        echo '<a href="./verTarefa.php?cod='. $feitoTask['cod'] . '">' . $feitoTask['nome_tarefa'] . ' [' . $usuarioNome . '] </a>';
+                        echo '</div>';
+                    }
+                ?>
 
             </div>
         </div>
