@@ -39,11 +39,21 @@
     
     // COMANTARIOS -------------------------------
     function adicionarComentario($codTarefa, $codUsuario, $comentario){
+        global $banco;
+        $query = "INSERT INTO comentarios (cod_tarefa, cod_usuario, texto, criado_em) VALUES ('$codTarefa', '$codUsuario', '$comentario', NOW())";
+        $banco->query($query);
         // INSERT INTO comentarios (cod_tarefa, cod_usuario, texto, criado_em) VALUES ('$codTarefa', '$codUsuario', '$comentario', NOW())
     }
 
     function apagarComentario($codComentario){
+        global $banco;
+        $query = "DELETE FROM comentarios WHERE cod = '$codComentario'";
+        $banco->query($query);
         // DELETE FROM comentarios WHERE cod = '$codComentario'
+    }
+
+    function criarNovaTarefa() {
+        
     }
 
     function pegarComentariosPorCodigo($codTarefa){

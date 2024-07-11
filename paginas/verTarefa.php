@@ -4,11 +4,22 @@
     require_once '../config/banco.php';
 
     $codTarefa = $_GET['cod'] ?? null;
-    $novoComentario = $_POST['novoComentario'] ?? null;
+    
 
     if (is_null($codTarefa)) {
         die("Nenhuma tarefa selecionada");
-    } 
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') 
+    { 
+        session_start();
+        $codUsuario = $_SESSION['codUsuario'] ?? null;
+        echo $codUsuario;
+        $novoComentario = $_POST['novoComentario'] ?? null;
+        if(!is_null($novoComentario) && !is_null($codUsuario)) {
+            adicionarComentario($codTarefa, $codUsuario, $novoComentario);
+        }
+    }
     
     $tarefa = pegarTarefaPorCodigo($codTarefa);
     $tituloPagina = "Tarefa $codTarefa - " . $tarefa['nome_tarefa'];
