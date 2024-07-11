@@ -1,0 +1,5 @@
+require_once "../config/banco.php";
+require_once "../config/sessao.php";
+
+include_once "../includes/header.php";
+include_once '../includes/footer.php';

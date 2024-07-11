@@ -1,0 +1,41 @@
+------------------------------------------------------------------------------------------------
+PROVA 05 - QUINTA MANHÃ
+
+-> O formulário de login já funciona, mas para tudo funcionar lembre de arrumar a função login para salvar o usuario logado em sessão;
+
+[] Arquivo header.php
+    - Alterar código do header para dar bem vindo ao usuario que fez login;
+    - Alterar os botões que aparecem ao logar e adicionar seus links certos;
+    - Quando Logado: mostrar "Dashboard" e "Logout";
+    - Se ADM: mostrar também "Gerenciar Contas";
+
+[] Arquivo criarUsuario.php
+    - Alterar o código para permitir criar um novo usuario;
+    - Salvar ele em banco com a senha em hash;
+    - Ao criar a conta, fazer login automaticamente com este usuario;
+    - Agora considere que poucas pessoas tem acesso a este formulário e altere ele para que seja possível criar usuarios de dois tipos.
+    - (Adicione uma forma de escolher entre estar criando um usuario ADM ou NORMAL)
+
+[] Arquivo dashboard.php
+    - Arrumar os links dos botões;
+    - Listar as tarefas conforme seu status (Fazer, Fazendo, Feito);
+    - Mostrar o nome do usuario ao lado do nome da tarefa a qual ela foi atribuida;
+    - Ao clicar em uma tarefa levar a pagina verTarefa.php para ver ela toda e suas configurações;
+
+[] Arquivio verTarefa.php
+    - Permitir que os usuarios possam adicionar comentarios e depois mostre todos os comentarios feitos para tal tarefa;
+    - Ao listar os comentarios, mostre também seu nome e o horario;
+    - Adicionar uma funcionalidade de deletar comentários liberada apenas aos usuarios ADMs.
+
+[] Arquivo minhaConta.php
+    - Permitir que apenas os usuairos ADM tenham acesso a esta página.
+    - Considerando isso, crie uma forma de listar os usuarios existentes e permitir o adm logado escolher um para editar.
+    - Desta forma, atualize a página para que seja possível alterar o nome e/ou usuario escolhido (salvando diretamente no banco);
+    - Ao salvar o novo nome/usuario, lembre de também altera-los na sessão em que está logado;
+
+[] Arquivo editarTarefa.php
+    - Permitir o usuario quando logado altere uma terafa;
+    - Além do formulario/código que existe, adicione uma forma de poder editar/alterar a quem a tarefa pertence.
+
+[] Historico (verTarefa/editarTarefa)
+    - Salvar e mostrar todas as operações realizadas nos históricos de cada tarefa.
