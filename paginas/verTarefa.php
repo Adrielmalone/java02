@@ -66,6 +66,11 @@
 
 
                 echo '<p>' . $comentarioText . ' - <em> [' . $comentarioUsuNome . ' - ' . $horario . '] </em> </p>';
+
+                session_start();
+                if($_SESSION['usuarioTipo'] === "ADM") {
+                    echo '<a href="./operacoes/deletarComentario.php?cod=' . $comentario['cod'] . '&' . 'tar=' .$codTarefa .'">Excluir Comentario</a>';
+                }
             }
          
         ?>
